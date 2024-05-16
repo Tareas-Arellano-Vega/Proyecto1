@@ -5,3 +5,5 @@ pymongo==4.0.1
 python-dotenv==0.19.1
 Werkzeug==2.0.2
 PyJWT==2.3.0
+pymongo[srv]==4.0.1
+
