@@ -29,7 +29,8 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default_fallback_key')
 
 #Configuracion Mongo
 
-mongo_uri = "mongodb://localhost:27017"
+#mongo_uri = "mongodb://localhost:27017"
+mongo_uri = "mongodb+srv://PabloArellano:Arisa_1027@medicos.ggn4wi3.mongodb.net/?retryWrites=true&w=majority&appName=medicos"
 client = pymongo.MongoClient(mongo_uri)
 
 

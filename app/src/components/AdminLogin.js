@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../App.css';
+import '../formulario.css';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +20,7 @@ const AdminLogin = () => {
       console.log('Respuesta del servidor:', response.data);
       //setSuccess('Credenciales correctas');
       localStorage.setItem('token', response.data.token)
-      // Aquí puedes manejar la respuesta del servidor, por ejemplo, guardar el token JWT en el almacenamiento local y redirigir al usuario a otra página
+      
       window.location.href = '/MedicosManager'
     } catch (error) {
       setError('Credenciales incorrectas');
@@ -27,21 +29,31 @@ const AdminLogin = () => {
   };
 
   return (
-    <div>
-      <h1>Inicio de Sesión de Administradores</h1>
-      <form onSubmit={handleFormSubmit}>
-        <div>
+    <>
+      <nav className='navbar'>
+          <div className='navbar-left'>
+            <h1>Inicio</h1>
+          </div>
+          <div className='navbar-right'>
+            <button className='btn-admin-login' onClick={() => window.location.href='/'}>Volver</button>
+          </div>
+      </nav>
+      <div className='form-container'>
+        <h1>Inicio de Sesión de Administradores</h1>
+        <form onSubmit={handleFormSubmit}>
+          
           <label>Email:</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div>
+          
+          
           <label>Contraseña:</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        {error && <p>{error}</p>}
-        <button type="submit">Iniciar Sesión</button>
-      </form>
-    </div>
+          
+          {error && <p>{error}</p>}
+          <button type="submit">Iniciar Sesión</button>
+        </form>
+      </div>
+    </>
   );
 };
 

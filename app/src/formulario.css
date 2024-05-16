@@ -1,0 +1,54 @@
+/* Estilos para el contenedor del formulario */
+.form-container {
+  margin: 20px auto;
+  padding: 20px;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #444242;
+  border-radius: 10px;
+  width: 60%; /* Ajusta el ancho del contenedor del formulario */
+  background-color: #161b22; /* Cambiar el color de fondo */
+}
+
+/* Estilos para el título del formulario */
+.form-container h1 {
+  margin: 0;
+  padding-bottom: 20px; /* Añade espacio entre el título y el formulario */
+  color: #ffffff; /* Color del texto */
+}
+
+/* Estilos para el formulario */
+.form-container form {
+  display: flex;
+  flex-direction: column; /* Alinear los elementos verticalmente */
+}
+
+/* Estilos para las etiquetas de los campos */
+.form-container label {
+  margin-bottom: 5px; /* Espacio entre las etiquetas y los campos */
+}
+
+/* Estilos para los campos de entrada */
+.form-container input {
+  padding: 8px; /* Ajustar el relleno de los campos */
+  margin-bottom: 15px; /* Espacio entre los campos */
+  border-radius: 5px; /* Radio de borde de los campos */
+  border: 1px solid #444242; /* Borde de los campos */
+  background-color: #0d1117; /* Color de fondo de los campos */
+  color: #ffffff; /* Color del texto de los campos */
+}
+
+/* Estilos para el botón de enviar */
+.form-container button[type="submit"] {
+  background-color: #238636; /* Color de fondo del botón */
+  color: #ffffff; /* Color del texto del botón */
+  border: none; /* Eliminar el borde del botón */
+  padding: 10px 20px; /* Ajustar el relleno del botón */
+  border-radius: 5px; /* Radio de borde del botón */
+  cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: #135326; /* Cambiar el color de fondo al pasar sobre el botón */
+}
+

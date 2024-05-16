@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import '../App.css';
+import '../formulario.css';
+
 
 const PedirCita = ({ especialistaId }) => {
   const [paciente, setPaciente] = useState('');
@@ -31,21 +34,30 @@ const PedirCita = ({ especialistaId }) => {
   };
 
   return (
-    <div>
-      <h1> Pedir Cita </h1>
-      <form onSubmit={handleFormSubmit}>
-      <p>ID del Especialista: {especialistaId2}</p>
-        <label> Nombre del Paciente: </label>
-        <input type="text" value={paciente} onChange={(e) => setPaciente(e.target.value)} required />
-        <label> Fecha: </label>
-        <input type="date" value={fecha} onChange={(e) => setFecha(e.target.value)} required />
-        <label> Hora: </label>
-        <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} required />
-        <label> Correo del Paciente: </label>
-        <input type="email" value={correoPaciente} onChange={(e) => setCorreoPaciente(e.target.value)} required />
-        <button type="submit"> Pedir Cita </button>
-      </form>
-    </div>
+    <>
+      <nav className='navbar'>
+          <div className='navbar-left'>
+            <h1>Inicio</h1>
+          </div>
+          <div className='navbar-right'>
+            <button className='btn-admin-login' onClick={() => window.location.href='/'}>Volver</button>
+          </div>
+      </nav>
+      <div className='form-container'>
+        <h1> Pedir Cita </h1>
+        <form onSubmit={handleFormSubmit}>
+          <label> Nombre del Paciente: </label>
+          <input type="text" value={paciente} onChange={(e) => setPaciente(e.target.value)} required />
+          <label> Fecha: </label>
+          <input type="date" value={fecha} onChange={(e) => setFecha(e.target.value)} required />
+          <label> Hora: </label>
+          <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} required />
+          <label> Correo del Paciente: </label>
+          <input type="email" value={correoPaciente} onChange={(e) => setCorreoPaciente(e.target.value)} required />
+          <button type="submit"> Pedir Cita </button>
+        </form>
+      </div>
+    </>
   );
 };
 

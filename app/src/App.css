@@ -13,20 +13,173 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+  background-color: #0d1117; 
+  background-size: cover; 
+  background-position: center; 
+  font-family: Arial, sans-serif; 
 }
 
-.App-link {
-  color: #61dafb;
+
+
+.medicos-container {
+  margin: 20px auto;
+  padding: 20px;
+  color: #ffffff;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #444242;
+  border-radius: 10px;
+  width: 80%;
+  background-color: #0d1117;
 }
+
+
+.medicos-header {
+  background-color: #161b22; 
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 20px;
+}
+
+
+.medicos-header h1 {
+  margin: 0;
+}
+
+
+.medicos-header select,
+.medicos-header input,
+.medicos-header button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.medico-card {
+  display: flex; 
+  background-color: #0d1117;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #444242;
+}
+
+.medico-card img {
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%; 
+  margin-right: 20px;
+}
+
+.medico-info {
+  flex: 1; 
+}
+
+.medico-info h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.medico-info p {
+  margin: 5px 0;
+}
+
+.btn-editar-medico,
+.btn-borrar-medico,
+.btn-actualizar,
+.btn-pedir-cita,
+.btn-ver-perfil {
+  background-color: #0d1117; 
+  color: #fff; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  cursor: pointer;
+  margin-right: 10px; 
+}
+
+.btn-editar-medico:hover,
+.btn-borrar-medico:hover,
+.btn-actualizar:hover,
+.btn-pedir-cita:hover,
+.btn-ver-perfil:hover {
+  background-color: #33343c; 
+}
+
+.btn-pedir-cita {
+  background-color: #238636; 
+}
+
+.btn-ver-perfil {
+  background-color: #21262d; 
+}
+
+.btn-borrar-medico{
+  background-color: #ff2020; 
+}
+
+.btn-editar-medico{
+  background-color: #2d98fc; 
+}
+
+.btn-admin-login {
+  background-color: #010409; 
+  color: white; 
+  border: 1px solid  #444242; 
+  border-radius: 5px; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+}
+
+.btn-admin-login:hover {
+  background-color: #21262d; 
+}
+
+.filtro-container {
+  display: flex;
+  align-items: center;
+}
+
+.select-filtro {
+  background-color: #0d1117; 
+  color: #ffffff; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  padding: 8px; 
+  margin-right: 10px; 
+}
+
+.input-filtro {
+  flex-grow: 0.005; 
+  background-color: #fff; 
+  color: #333; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  padding: 8px; 
+}
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #010409; 
+  padding: 10px 20px; 
+  color: white; 
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+
 
 @keyframes App-logo-spin {
   from {

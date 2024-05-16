@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
+import '../App.css';
+import '../formulario2.css';
+
 const EditarMedico = ({ especialistaId }) => {
   const [medico, setMedico] = useState({});
   const [nombre, setNombre] = useState('');
@@ -19,6 +22,7 @@ const EditarMedico = ({ especialistaId }) => {
   const [telefono, setTelefono] = useState('');
   const [email, setEmail] = useState('');
   const [foto_url, setFoto_url] = useState('');
+  const [error, setError] = useState('');
 
 
   const location = useLocation();
@@ -26,11 +30,10 @@ const EditarMedico = ({ especialistaId }) => {
   const especialistaId2 = searchParams.get('id');
 
   const [mensaje, setMensaje] = useState('');
-  const [mostrarMensaje, setMostrarMensaje] = useState(false); // Estado para controlar la visibilidad del mensaje
+  const [mostrarMensaje, setMostrarMensaje] = useState(false); 
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // Utiliza las funciones de estado correspondientes para actualizar cada campo del formulario
     switch (name) {
       case "nombre":
         setNombre(value);
@@ -72,32 +75,39 @@ const EditarMedico = ({ especialistaId }) => {
   
 
   useEffect((espel) => {
-    const fetchMedico = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3001/medicos/${especialistaId2}`);
-        setMedico(response.data);
-
-        setNombre(response.data.nombre);
-        setApellido(response.data.apellido);
-        setRut(response.data.rut);
-        setEspecializacion(response.data.especializacion);
-        setCiudad(response.data.ciudad);
-        setRegion(response.data.region);
-        setDireccion(response.data.direccion);
-        setEducacion(response.data.educacion);
-        setExperiencia(response.data.experiencia);
-        setCertificaciones(response.data.certificaciones);
-        setPublicaciones(response.data.publicaciones);
-        setOrganizaciones(response.data.organizaciones);
-        setTelefono(response.data.telefono);
-        setEmail(response.data.email);
-        setFoto_url(response.data.foto_url);
-
-      } catch (error) {
-        console.error('Error fetching medico:', error);
-      }
-    };
-    fetchMedico();
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError('Debe iniciar sesión para acceder a esta página');
+      window.location.href = `/AdminLogin`;
+    } else {
+      const fetchMedico = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3001/medicos/${especialistaId2}`);
+          setMedico(response.data);
+  
+          setNombre(response.data.nombre);
+          setApellido(response.data.apellido);
+          setRut(response.data.rut);
+          setEspecializacion(response.data.especializacion);
+          setCiudad(response.data.ciudad);
+          setRegion(response.data.region);
+          setDireccion(response.data.direccion);
+          setEducacion(response.data.educacion);
+          setExperiencia(response.data.experiencia);
+          setCertificaciones(response.data.certificaciones);
+          setPublicaciones(response.data.publicaciones);
+          setOrganizaciones(response.data.organizaciones);
+          setTelefono(response.data.telefono);
+          setEmail(response.data.email);
+          setFoto_url(response.data.foto_url);
+  
+        } catch (error) {
+          console.error('Error fetching medico:', error);
+        }
+      };
+      fetchMedico();
+    }
+    
   }, [especialistaId2]);
 
   const handleFormSubmit = async (event) => {
@@ -126,57 +136,64 @@ const EditarMedico = ({ especialistaId }) => {
 
   };
 
+
+  const handleSalirClick = () => {
+    window.location.href = `/MedicosManager`;
+  }
+
   return (
-    <div>
-      <h1>Editar Médico</h1>
-      {mensaje && <p>{mensaje}</p>}
-      <p>ID del Especialista: {especialistaId2}</p>
-      <form onSubmit={handleFormSubmit}>
-        {/* Campos del formulario para editar el médico */}
-        <label htmlFor="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" value={nombre} onChange={handleChange} required />
+    <>
+      <nav className='navbar'>
+            <div className='navbar-left'>
+              <h1>Inicio</h1>
+            </div>
+            <div className='navbar-right'>
+              <button className='btn-admin-login' onClick={() => handleSalirClick()}>Volver</button>
+            </div>
+        </nav>
+      <div className='form-container'>
+        <h1>Editar Médico</h1>
+        {mensaje && <p>{mensaje}</p>}
+        <form onSubmit={handleFormSubmit}>
+          <label htmlFor="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" value={nombre} onChange={handleChange} required />
 
-        <label htmlFor="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" value={apellido} onChange={handleChange} required />
+          <label htmlFor="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" value={apellido} onChange={handleChange} required />
 
-        <label htmlFor="rut">Rut:</label>
-        <input type="text" id="rut" name="rut" value={rut} onChange={handleChange} required />
+          <label htmlFor="rut">Rut:</label>
+          <input type="text" id="rut" name="rut" value={rut} onChange={handleChange} required />
 
-        <label htmlFor="especializacion">Especializacion:</label>
-        <input type="text" id="especializacion" name="especializacion" value={especializacion} onChange={handleChange} required />
+          <label htmlFor="especializacion">Especializacion:</label>
+          <input type="text" id="especializacion" name="especializacion" value={especializacion} onChange={handleChange} required />
 
-        <label htmlFor="ciudad">Ciudad:</label>
-        <input type="text" id="ciudad" name="ciudad" value={ciudad} onChange={handleChange} required />
+          <label htmlFor="ciudad">Ciudad:</label>
+          <input type="text" id="ciudad" name="ciudad" value={ciudad} onChange={handleChange} required />
 
-        <label htmlFor="region">Region:</label>
-        <input type="text" id="region" name="region" value={region} onChange={handleChange} required />
+          <label htmlFor="region">Region:</label>
+          <input type="text" id="region" name="region" value={region} onChange={handleChange} required />
 
-        <label htmlFor="direccion">Direccion:</label>
-        <input type="text" id="direccion" name="direccion" value={direccion} onChange={handleChange} required />
+          <label htmlFor="direccion">Direccion:</label>
+          <input type="text" id="direccion" name="direccion" value={direccion} onChange={handleChange} required />
 
-        <label htmlFor="experiencia">Experiencia:</label>
-        <input type="text" id="experiencia" name="experiencia" value={experiencia} onChange={handleChange} required />
+          <label htmlFor="experiencia">Experiencia:</label>
+          <input type="text" id="experiencia" name="experiencia" value={experiencia} onChange={handleChange} required />
 
-        <label htmlFor="telefono">Telefono:</label>
-        <input type="text" id="telefono" name="telefono" value={telefono} onChange={handleChange} required />
+          <label htmlFor="telefono">Telefono:</label>
+          <input type="text" id="telefono" name="telefono" value={telefono} onChange={handleChange} required />
 
-        <label htmlFor="email">Email:</label>
-        <input type="text" id="email" name="email" value={email} onChange={handleChange} required />
-
-
-        <label htmlFor="foto_url">URL de la foto:</label>
-        <input type="url" id="foto_url" name="foto_url" value={foto_url} onChange={handleChange} required />
-
-        
-        
-
-        {/* Agrega más campos del formulario para otros detalles del médico */}
+          <label htmlFor="email">Email:</label>
+          <input type="text" id="email" name="email" value={email} onChange={handleChange} required />
 
 
+          <label htmlFor="foto_url">URL de la foto:</label>
+          <input type="url" id="foto_url" name="foto_url" value={foto_url} onChange={handleChange} required />
 
-        <button type="submit">Actualizar Médico</button>
-      </form>
-    </div>
+
+          <button type="submit">Actualizar Médico</button>
+        </form>
+      </div>
+    </>
   );
 };
 
