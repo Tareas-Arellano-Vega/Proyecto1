@@ -1,10 +1,5 @@
 pipeline {
     agent any
-    environment {
-        NODEJS_VERSION = 'node' // Esta es la versión que configuraste con nvm
-        NVM_DIR = '/var/lib/jenkins/.nvm' // Ruta donde está instalado nvm
-        PATH = "$NVM_DIR/versions/node/$NODEJS_VERSION/bin:$PATH"
-    }
     
     stages {
         stage('Build API') {
@@ -15,21 +10,6 @@ pipeline {
             }
         }
 
-        stages {
-        stage('Setup Environment') {
-            steps {
-                script {
-                    // Cargar nvm
-                    def nvmHome = env.NVM_DIR
-                    def nvmSh = "${nvmHome}/nvm.sh"
-                    if (!fileExists(nvmSh)) {
-                        error("Cannot find nvm.sh in ${nvmHome}")
-                    }
-                    env.NODE_VERSION = sh(script: "source ${nvmSh} && nvm alias default ${NODEJS_VERSION} && nvm use default && node --version", returnStdout: true).trim()
-                    echo "Using Node.js version: ${env.NODE_VERSION}"
-                }
-            }
-        }
         
         stage('Build React Native App') {
             steps {
@@ -70,3 +50,4 @@ pipeline {
             }
         }
     }
+}
