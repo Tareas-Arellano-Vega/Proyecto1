@@ -5,8 +5,8 @@ pipeline {
         stage('Build API') {
             steps {
                 dir('api') {
-                    sh 'pip install -r requirements.txt' // Instalar dependencias de la API
-                    sh 'python manage.py migrate' // Ejecutar migraciones si es necesario
+                    sh 'pip install -r requirements.txt'
+                    sh 'python manage.py migrate'
                 }
             }
         }
@@ -14,8 +14,8 @@ pipeline {
         stage('Build React Native App') {
             steps {
                 dir('app') {
-                    sh 'npm install' // Instalar dependencias de la app React Native
-                    sh 'npm run build' // Construir la app React Native
+                    sh 'npm install'
+                    sh 'npm run build'
                 }
             }
         }
@@ -23,21 +23,31 @@ pipeline {
         stage('Test') {
             steps {
                 dir('api') {
-                    sh 'pytest' // Ejecutar pruebas de la API
+                    sh 'pytest'
                 }
                 dir('app') {
-                    sh 'npm test' // Ejecutar pruebas de la app React Native
+                    sh 'npm test'
                 }
             }
         }
         
         stage('Deploy') {
             steps {
-                // Aquí puedes agregar comandos para desplegar tu API y tu app React Native
-                // Por ejemplo, despliegue a un servidor, compilación de artefactos, etc.
-                // sh 'deploy_script.sh'
+                // Ejemplo de despliegue de API
+                dir('api') {
+                    sh 'chmod +x deploy_script.sh' // Dar permisos de ejecución al script de despliegue si es necesario
+                    sh './deploy_script.sh' // Ejecutar script de despliegue de la API
+                }
+                
+                // Ejemplo de despliegue de App React Native (ejemplo ficticio)
+                dir('app') {
+                    // Puedes agregar aquí comandos específicos para desplegar tu app React Native
+                    // Por ejemplo, compilar APK, enviar a servicios de despliegue como Firebase, etc.
+                }
             }
         }
     }
+}
+
 }
 
