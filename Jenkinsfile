@@ -30,6 +30,7 @@ pipeline {
                     echo "Using Node.js version: ${env.NODE_VERSION}"
                 }
             }
+        }
 
         
         stage('Build React Native App') {
