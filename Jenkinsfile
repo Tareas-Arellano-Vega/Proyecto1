@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build API') {
             steps {
-                dir("${PWD}") {
+                dir("api") {
                     sh 'pip install -r requirements.txt'
                     sh 'python manage.py migrate'
                 }
