@@ -13,6 +13,7 @@ pipeline {
         stage('Build React Native App') {
             steps {
                 dir('app') {
+                    sh 'nvm use node' // Asegúrate de usar la versión correcta de Node.js
                     sh 'npm install'
                     sh 'npm run build'
                 }
