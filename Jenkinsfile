@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from the repository
-                git 'https://github.com/tu_usuario/tu_repositorio.git'
+                git 'https://github.com/Tareas-Arellano-Vega/Proyecto1.git'
             }
         }
 
