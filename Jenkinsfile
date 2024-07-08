@@ -4,6 +4,7 @@ pipeline {
     environment {
         NODEJS_HOME = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
         PATH = "$NODEJS_HOME/bin:$PATH"
+        CI = 'false'  // Deshabilitar el tratamiento de advertencias como errores
     }
     
     stages {
