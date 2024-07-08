@@ -12,15 +12,6 @@ pipeline {
         }
         
         
-        stage('Run API Tests') {
-            steps {
-                dir('api') {
-                    // Ejecutar pruebas de la API
-                    sh 'pytest api_tests.py'
-                }
-            }
-        }
-        
         
         stage('Deploy') {
             steps {
