@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    environment {
+        NODEJS_HOME = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+        PATH = "$NODEJS_HOME/bin:$PATH"
+    }
     
     stages {
         stage('Build and Test API') {
