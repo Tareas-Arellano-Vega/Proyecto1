@@ -7,13 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout the source code from the repository
-                git 'https://github.com/Tareas-Arellano-Vega/Proyecto1.git'
-            }
-        }
-
+        
         stage('Set up Python') {
             steps {
                 // Install Python and dependencies
