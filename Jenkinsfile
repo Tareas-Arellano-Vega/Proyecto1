@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Build and Test API') {
             steps {
-                // Instalar dependencias de la API
-                sh 'pip3 install -r requirements.txt'
+                dir('api') {
+                    // Instalar dependencias de la API
+                    sh 'pip3 install -r requirements.txt'
+                }
             }
         }
         
