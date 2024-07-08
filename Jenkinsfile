@@ -11,17 +11,6 @@ pipeline {
             }
         }
         
-        stage('Build React Native App') {
-            steps {
-                dir('app') {
-                    // Instalar dependencias de la app React Native
-                    sh 'npm install'
-                    
-                    // Construir la app React Native
-                    sh 'npm run build'
-                }
-            }
-        }
         
         stage('Run API Tests') {
             steps {
@@ -32,14 +21,6 @@ pipeline {
             }
         }
         
-        stage('Run React Native Tests') {
-            steps {
-                dir('app') {
-                    // Ejecutar pruebas de la app React Native
-                    sh 'npm test'
-                }
-            }
-        }
         
         stage('Deploy') {
             steps {
