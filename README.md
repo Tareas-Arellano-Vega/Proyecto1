@@ -4,6 +4,8 @@
 
 ## Enlace al video
 
+entrega 1
+
 Puedes ver el video en YouTube [aquí](https://youtu.be/QbM4kbXf9jw).
 
 ## Foto de tabla en Jira
