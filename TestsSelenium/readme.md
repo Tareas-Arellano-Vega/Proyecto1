@@ -15,8 +15,7 @@ Antes de ejecutar las pruebas, asegúrate de tener instaladas las siguientes dep
 
 1. Clona el repositorio:
     ```sh
-    git clone https://github.com/tu_usuario/tu_repositorio.git
-    cd tu_repositorio
+    git clone https://github.com/Tareas-Arellano-Vega/Proyecto1.git
     ```
 
 2. Instala las dependencias de Python:
