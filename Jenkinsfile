@@ -39,7 +39,7 @@ pipeline {
         stage('Run Selenium Tests') {
             steps {
                 // Instalar pytest si no está instalado
-                sh 'pip install pytest'
+                sh 'pip3 install pytest'
                 // Ejecutar las pruebas de Selenium
                 dir('TestsSelenium') {
                     sh 'pip3 install -r requirements.txt'
