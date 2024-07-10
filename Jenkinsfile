@@ -39,7 +39,7 @@ pipeline {
         stage('Run Selenium Tests') {
             steps {
                 // Ejecutar las pruebas de Selenium
-                dir('TestSelenium') {
+                dir('TestsSelenium') {
                     //sh 'pip3 install -r requirements.txt'
                     sh 'Test_api.py'  // Asume que pytest se usa para ejecutar las pruebas
                 }
