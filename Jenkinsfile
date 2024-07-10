@@ -36,6 +36,16 @@ pipeline {
             }
         }
 
+        stage('Run Selenium Tests') {
+            steps {
+                // Ejecutar las pruebas de Selenium
+                dir('TestSelenium') {
+                    sh 'pip3 install -r requirements.txt'
+                    sh 'pytest'  // Asume que pytest se usa para ejecutar las pruebas
+                }
+            }
+        }
+
 
     }
 }
