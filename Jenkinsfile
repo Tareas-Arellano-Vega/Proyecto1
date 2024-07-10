@@ -41,7 +41,7 @@ pipeline {
                 // Ejecutar las pruebas de Selenium
                 dir('TestsSelenium') {
                     sh 'pip3 install -r requirements.txt'
-                    sh 'Test_api.py'  // Asume que pytest se usa para ejecutar las pruebas
+                    sh 'pytest Test_api.py --maxfail=5 --disable-warnings --html=report.html'  // Ejecutar pruebas y generar informe HTML
                 }
             }
         }
