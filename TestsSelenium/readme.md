@@ -1,5 +1,7 @@
 # Selenium Testing con Pytest
 
+link video: https://youtu.be/i6Og95WpXFc
+
 Este repositorio contiene un conjunto de pruebas de interfaz de usuario utilizando Selenium y Pytest para garantizar la calidad y funcionalidad de la aplicación web.
 
 ## Requisitos
@@ -41,3 +43,6 @@ pytest .\TestsSelenium\Test_apy.py
 ![image](https://github.com/Tareas-Arellano-Vega/Proyecto1/assets/83191288/2feef01e-f4a6-404c-8f79-5ef3fdee9b96)
 
 Resultado de las distintas pruebas realizadas en la version actual del codigo
+
+
+
